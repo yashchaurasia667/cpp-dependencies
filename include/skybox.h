@@ -10,7 +10,6 @@
 #include <string.h>
 #include <vector>
 
-#define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
 class Skybox {
@@ -26,7 +25,7 @@ private:
   unsigned int cubemap;
 };
 
-Skybox::Skybox(const char *skybox, const char *extension) {
+inline Skybox::Skybox(const char *skybox, const char *extension) {
   unsigned int vertex_shader = 0;
   unsigned int fragment_shader = 0;
   std::vector<std::string> faces = {"px.", "nx.", "py.", "ny.", "pz.", "nz."};
@@ -93,11 +92,11 @@ Skybox::Skybox(const char *skybox, const char *extension) {
     glCall(glDeleteShader(fragment_shader));
 }
 
-void Skybox::bindSkybox() {
+inline void Skybox::bindSkybox() {
   glCall(glBindTexture(GL_TEXTURE_CUBE_MAP, cubemap));
 }
 
-void Skybox::render(glm::mat4 view, glm::mat4 projection) {
+inline void Skybox::render(glm::mat4 view, glm::mat4 projection) {
   glDepthFunc(GL_LEQUAL);
   glCall(glUseProgram(ID));
 
@@ -118,4 +117,4 @@ void Skybox::render(glm::mat4 view, glm::mat4 projection) {
   glDepthFunc(GL_LESS);
 }
 
-Skybox::~Skybox() { glDeleteProgram(ID); }
+inline Skybox::~Skybox() { glDeleteProgram(ID); }

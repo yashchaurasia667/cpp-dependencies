@@ -1,10 +1,10 @@
 #include "shader.h"
-#include <custom/shader.h>
 #include <utils.h>
 
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <cstring>
 
 using namespace std;
 
