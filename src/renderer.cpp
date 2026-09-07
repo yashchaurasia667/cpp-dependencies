@@ -79,7 +79,7 @@ Renderer::Renderer(const char *title, int width, int height, const char *glsl_ve
   if (vsync)
     glfwSwapInterval(1);
 
-  if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+  if (!gladLoadGL(glfwGetProcAddress))
     throw std::runtime_error("Failed to load OpenGL function pointers");
 
   glCall(glEnable(GL_DEPTH_TEST));
